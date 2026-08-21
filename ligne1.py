@@ -32,3 +32,6 @@ print(f"Total des lignes à enregistrer : {len(df_final)}")
 df_final.to_csv("fraudes_melange.csv", index=False)
 
 print("\nAnalyse terminée. Fichier 'fraudes_melange.csv' sauvegardé.")
+
+
+# Script de génération des transactions
