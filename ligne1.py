@@ -35,3 +35,4 @@ print("\nAnalyse terminée. Fichier 'fraudes_melange.csv' sauvegardé.")
 
 
 # Script de génération des transactions
+# Nouvelle fonctionnalité
