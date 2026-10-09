@@ -9,9 +9,9 @@ from kafka.errors import NoBrokersAvailable
 from elasticsearch import Elasticsearch
 
 
-# ==============================
+
 # CHARGEMENT PIPELINE ML
-# ==============================
+
 
 pipeline = joblib.load("xgboost_fraud_pipeline.pkl")
 
@@ -21,9 +21,9 @@ threshold = pipeline["threshold"]
 features = pipeline["features"]
 
 
-# ==============================
+
 # CONNEXION ELASTICSEARCH
-# ==============================
+
 
 while True:
 
@@ -46,9 +46,9 @@ while True:
 INDEX_NAME = "fraud-detection"
 
 
-# ==============================
+
 # CRÉATION INDEX
-# ==============================
+
 
 if not es.indices.exists(index=INDEX_NAME):
 
@@ -69,9 +69,9 @@ if not es.indices.exists(index=INDEX_NAME):
     print(f"Index '{INDEX_NAME}' créé")
 
 
-# ==============================
+
 # CONNEXION KAFKA
-# ==============================
+
 
 consumer = None
 
@@ -100,9 +100,9 @@ while consumer is None:
 print("Consumer démarré...")
 
 
-# ==============================
+
 # STREAM PROCESSING
-# ==============================
+
 
 for message in consumer:
 
@@ -143,9 +143,9 @@ for message in consumer:
         print(f"Classe réelle : {true_class}")
         print("==============================")
 
-        # ==========================
+     
         # DOCUMENT ELASTICSEARCH
-        # ==========================
+
 
         elastic_doc = data.copy()
 
@@ -155,9 +155,9 @@ for message in consumer:
 
         elastic_doc["@timestamp"] = pd.Timestamp.utcnow().isoformat()
 
-        # ==========================
+
         # INDEXATION
-        # ==========================
+
 
         response = es.index(
             index=INDEX_NAME,
