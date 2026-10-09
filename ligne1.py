@@ -1,13 +1,13 @@
 import pandas as pd
 
-# ==============================
+
 # CHARGEMENT DATASET
-# ==============================
+
 df = pd.read_csv("data/creditcard.csv")
 
-# ==============================
+
 # FILTRER LES DONNÉES
-# ==============================
+
 
 # Sélectionner 80 lignes où Class = 1 (Fraudes)
 fraudes = df[df["Class"] == 1].head(80)
@@ -21,9 +21,9 @@ df_final = pd.concat([fraudes, legitimes])
 # Optionnel : Mélanger les lignes pour ne pas avoir les fraudes groupées au début
 df_final = df_final.sample(frac=1).reset_index(drop=True)
 
-# ==============================
+
 # AFFICHAGE & SAUVEGARDE
-# ==============================
+
 print(f"Nombre de fraudes sélectionnées : {len(fraudes)}")
 print(f"Nombre de transactions légitimes sélectionnées : {len(legitimes)}")
 print(f"Total des lignes à enregistrer : {len(df_final)}")
