@@ -1,8 +1,8 @@
 services:
 
-  # =====================================
+
   # ZOOKEEPER
-  # =====================================
+
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
@@ -14,9 +14,9 @@ services:
     ports:
       - "2181:2181"
 
-  # =====================================
+ 
   # KAFKA
-  # =====================================
+
 
   kafka:
     image: confluentinc/cp-kafka:7.4.0
@@ -36,9 +36,8 @@ services:
 
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
-  # =====================================
+
   # ELASTICSEARCH
-  # =====================================
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
@@ -61,9 +60,7 @@ services:
       timeout: 10s
       retries: 30
 
-  # =====================================
   # KIBANA
-  # =====================================
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.13.4
@@ -79,9 +76,7 @@ services:
     ports:
       - "5601:5601"
 
-  # =====================================
   # PRODUCER
-  # =====================================
 
   producer:
     build: ./producer
@@ -92,9 +87,9 @@ services:
     depends_on:
       - kafka
 
-  # =====================================
+ 
   # CONSUMER
-  # =====================================
+
 
   consumer:
     build: ./consumer
